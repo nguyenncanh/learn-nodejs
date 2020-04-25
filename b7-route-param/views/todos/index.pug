@@ -1,0 +1,13 @@
+h1 Todos List
+a(href="/todos/create") New
+form(action="/todos/search", method="GET")
+  input(type="text", name="q", value=searchValue)
+  button Search
+ul
+  each todo in todos
+    li
+      span= todo.text
+      span &nbsp;
+      a(href='/todos/' + todo.id) View
+      span &nbsp;
+      a(href='/todos/' + todo.id + '/delete') Delete

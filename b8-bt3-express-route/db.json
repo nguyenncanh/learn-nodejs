@@ -1,0 +1,60 @@
+{
+  "books": [
+    {
+      "title": "Cha giàu cha nghèo",
+      "des": "chất lượng cao, 5 sao, nên xem",
+      "id": "GM7C0S_9M"
+    },
+    {
+      "title": "Đắc nhân tâm",
+      "des": "rất hay",
+      "id": "-D3vfOA-b"
+    },
+    {
+      "title": "Bố già",
+      "des": "gangter, tội phạm",
+      "id": "cz_2UTX2f"
+    }
+  ],
+  "users": [
+    {
+      "name": "Nguyễn Cảnh",
+      "id": "s7KAyxl1h"
+    },
+    {
+      "name": "Hải Lê",
+      "id": "iL4rFAoq5"
+    },
+    {
+      "name": "Nguyên Vy",
+      "id": "m-bZpYEj0"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "uhWojQ76R",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ]
+    },
+    {
+      "id": "Udvyov7y_",
+      "idUser": "iL4rFAoq5",
+      "idBooks": [
+        "GM7C0S_9M",
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ]
+    },
+    {
+      "id": "0QERxRTqO",
+      "idUser": "m-bZpYEj0",
+      "idBooks": [
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+h1 Transaction detail
+
+p
+  b Name:
+  span &nbsp;
+  span= user
+p 
+    b Danh sách sách đã mượn: 
+ul
+    each book in books 
+        li= book
+a(href="/transactions") Back to transactions list

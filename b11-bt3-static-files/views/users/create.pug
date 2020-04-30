@@ -1,0 +1,8 @@
+extends ../layout/common
+
+block content
+  h1 Create New User
+  form(action="/users/create", method="POST")
+    label Name:
+    input(type="text", name="name")
+    button Create

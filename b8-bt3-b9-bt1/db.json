@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "title": "Cha giàu cha nghèo",
+      "des": "chất lượng cao, 5 sao, nên xem",
+      "id": "GM7C0S_9M"
+    },
+    {
+      "title": "Đắc nhân tâm",
+      "des": "rất hay",
+      "id": "-D3vfOA-b"
+    },
+    {
+      "title": "Bố già",
+      "des": "gangter, tội phạm",
+      "id": "cz_2UTX2f"
+    },
+    {
+      "title": "Hạnh phúc ra sao",
+      "des": "Hạnh phúc thật sự là như thế nào, cùng tìm hiểu hạnh phúc của riêng bạn thông qua quyển sách này.",
+      "id": "CqAlG26eO"
+    }
+  ],
+  "users": [
+    {
+      "name": "Nguyễn Cảnh",
+      "id": "s7KAyxl1h"
+    },
+    {
+      "name": "Lê Khắc Hải",
+      "id": "iL4rFAoq5"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "VxZM7HErM",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+h1 Danh sách mượn sách
+a(href="/transactions/create") New
+form(action="/transactions/search", method="GET")
+  input(type="text", name="q", value=searchValue)
+  button Search
+ul
+  each transaction in transactions
+    if (transaction.isComplete === false)
+      li
+        each user in users
+          if (user.id === transaction.idUser)
+            span= user.name
+            ul
+              if (typeof(transaction.idBooks) === 'string') 
+                each book in books
+                  if (book.id === transaction.idBooks)
+                    li= book.title
+                    span 
+                      a(href='/transactions/' + transaction.id +'/'+ book.id + '/deleteBook') Delete
+              else
+                each idBook in transaction.idBooks
+                  each book in books
+                    if (idBook === book.id)
+                      li= book.title
+                      span 
+                        a(href='/transactions/' + transaction.id +'/'+ book.id + '/deleteBook') Delete
+        br
+        a(href='/transactions/' + transaction.id + '/view') View Detail
+        span &nbsp;
+        a(href='/transactions/' + transaction.id + '/delete') Delete All
+        span &nbsp;
+        a(href='/transactions/' + transaction.id + '/complete') Complete
+        div -----------------------------------
+      br
+a(href="/") Back to Home page

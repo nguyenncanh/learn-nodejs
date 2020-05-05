@@ -1,0 +1,11 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 User detail
+
+  p
+    b Name:
+    span &nbsp;
+    span= user.name
+  a(href="/users") Back to Users list

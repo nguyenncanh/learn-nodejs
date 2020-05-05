@@ -1,0 +1,12 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 Book detail
+  p
+    h3= book.title
+  p
+    b Description:
+    span &nbsp;
+    span= book.des
+  a(href="/books") Back to Books list

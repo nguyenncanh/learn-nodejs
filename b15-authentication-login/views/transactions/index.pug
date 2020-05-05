@@ -1,0 +1,76 @@
+extends ../layout/common
+
+block content
+  .mt-3
+    .text-center
+      h1 Transactions list
+      
+    if errors
+      .alert.alert-danger= errors
+    else
+      .d-flex.align-items-center
+        a.btn.btn-primary.mb-3(href="/transactions/create") New
+        form.d-flex.ml-auto(action="/transactions/search", method="GET")
+          input.form-control(type="text", name="q", value=searchValue)
+          button.btn.btn-primary.ml-2 Search
+      .table-responsive
+        table.table.table-bordered.table-hover
+            thead
+                tr
+                  th User
+                  th Books
+                  th Action
+            - console.log('c', transactions instanceof Array)
+            if (transactions instanceof Array === true)
+              each transaction in transactions
+                tbody
+                  tr
+                    if (transaction.isComplete === false)
+                        each user in users
+                          if (user.id === transaction.idUser)
+                            td= user.name
+                            td
+                              ul.list-group
+                                if (typeof(transaction.idBooks) === 'string') 
+                                  each book in books
+                                    if (book.id === transaction.idBooks)
+                                      li.list-group-item= book.title
+                                        a.btn.btn-danger.ml-auto.float-right(href='/transactions/' + transaction.id +'/'+ book.id + '/deleteBook') Delete
+                                else
+                                  each idBook in transaction.idBooks
+                                    each book in books
+                                      if (idBook === book.id)
+                                        li.list-group-item= book.title
+                                          a.btn.btn-danger.ml-auto.float-right(href='/transactions/' + transaction.id +'/'+ book.id + '/deleteBook') Delete
+                            td.col-action
+                              a.btn.btn-success(href='/transactions/' + transaction.id + '/view') View Detail
+                              span &nbsp;
+                              a.btn.btn-danger(href='/transactions/' + transaction.id + '/delete') Delete All
+                              span &nbsp;
+                              a.btn.btn-info(href='/transactions/' + transaction.id + '/complete') Complete
+            else
+              tbody
+                tr
+                  if (transactions.isComplete === false)
+                    if (users.id === transactions.idUser)
+                      td= users.name
+                      td
+                        ul.list-group
+                          if (typeof(transactions.idBooks) === 'string') 
+                            each book in books
+                              if (book.id === transactions.idBooks)
+                                li.list-group-item= book.title
+                                  a.btn.btn-danger.ml-auto.float-right(href='/transactions/' + transactions.id +'/'+ book.id + '/deleteBook') Delete
+                          else
+                            each idBook in transactions.idBooks
+                              each book in books
+                                if (idBook === book.id)
+                                  li.list-group-item= book.title
+                                    a.btn.btn-danger.ml-auto.float-right(href='/transactions/' + transactions.id +'/'+ book.id + '/deleteBook') Delete
+                      td.col-action
+                        a.btn.btn-success(href='/transactions/' + transactions.id + '/view') View Detail
+                        span &nbsp;
+                        a.btn.btn-danger(href='/transactions/' + transactions.id + '/delete') Delete All
+                        span &nbsp;
+                        a.btn.btn-info(href='/transactions/' + transactions.id + '/complete') Complete
+    a(href="/") Back to Home page

@@ -1,0 +1,124 @@
+{
+  "books": [
+    {
+      "title": "Cha giàu cha nghèo",
+      "des": "Chất lượng cao, 5 sao, nên xem",
+      "id": "GM7C0S_9M"
+    },
+    {
+      "title": "Đắc nhân tâm",
+      "des": "rất hay",
+      "id": "-D3vfOA-b"
+    },
+    {
+      "title": "Bố già",
+      "des": "gangter, tội phạm",
+      "id": "cz_2UTX2f"
+    },
+    {
+      "title": "Hạnh phúc ra sao",
+      "des": "Hạnh phúc thật sự là như thế nào, cùng tìm hiểu hạnh phúc của riêng bạn thông qua quyển sách này.",
+      "id": "CqAlG26eO"
+    },
+    {
+      "title": "Đời ngắn đừng ngủ dài",
+      "des": "",
+      "id": "1mMQBDe5a"
+    }
+  ],
+  "users": [
+    {
+      "name": "Nguyễn Cảnh",
+      "id": "s7KAyxl1h",
+      "email": "nguyencanh@gmail.com",
+      "password": "123123",
+      "isAdmin": true
+    },
+    {
+      "name": "Lê Khắc Hải",
+      "id": "iL4rFAoq5",
+      "email": "khachai@gmail.com",
+      "password": "123123",
+      "isAdmin": false
+    },
+    {
+      "name": "Đông Quân",
+      "phone": "0123234328",
+      "id": "xAi7-nSTD",
+      "email": "dongquan@gmail.com",
+      "password": "123123",
+      "isAdmin": false
+    },
+    {
+      "name": "Nguyên Vy",
+      "phone": "0123451238",
+      "id": "mlugfZdkH",
+      "email": "nguyenvy@gmail.com",
+      "password": "123123",
+      "isAdmin": false
+    }
+  ],
+  "transactions": [
+    {
+      "id": "qjLMAyeO2",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "CqAlG26eO"
+      ],
+      "isComplete": true
+    },
+    {
+      "id": "jwXVZjq2m",
+      "idUser": "iL4rFAoq5",
+      "idBooks": [
+        "cz_2UTX2f",
+        "CqAlG26eO"
+      ],
+      "isComplete": true
+    },
+    {
+      "id": "XSueQN10O",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "CqAlG26eO"
+      ],
+      "isComplete": true
+    },
+    {
+      "id": "GQH7MY9zI",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "CqAlG26eO"
+      ],
+      "isComplete": true
+    },
+    {
+      "id": "P2v1kzxmv",
+      "idUser": "iL4rFAoq5",
+      "idBooks": [
+        "GM7C0S_9M"
+      ],
+      "isComplete": false
+    },
+    {
+      "id": "OOqNjsTkM",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "GM7C0S_9M",
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ],
+      "isComplete": true
+    },
+    {
+      "id": "edlTWnOHy",
+      "idUser": "s7KAyxl1h",
+      "idBooks": [
+        "GM7C0S_9M",
+        "-D3vfOA-b",
+        "cz_2UTX2f"
+      ],
+      "isComplete": false
+    }
+  ]
+}

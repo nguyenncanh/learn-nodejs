@@ -1,0 +1,11 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 Update user
+
+  form(action='/users/'+ user.id +'/update', method="POST")
+    label(for="name") Name:
+    input#name.form-control(type="text", name="name", value=user.name)
+    .text-center.mt-3
+      button Save

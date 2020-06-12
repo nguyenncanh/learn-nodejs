@@ -64,5 +64,8 @@ This is a repo, I upload my exercise when i learn Nodejs Web Server using Expres
 - Bài 29 - Deploy to Heroku - 2
   - [Bài tập](https://glitch.com/~b29-bt2-deploy-to-heroku)
 
+#### Link github project full
+- [GitHub project](https://github.com/nguyenncanh/BookStoreWebServer)
+
 #### Link heroku
 - [Demo](https://express-example-nguyencanh.herokuapp.com/)

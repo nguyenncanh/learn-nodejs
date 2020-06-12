@@ -1,0 +1,39 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 User profile
+  .d-flex.justify-content-center.mt-4
+    if (user.avatar)
+      a(href='/users/profile/avatar')
+        img.rounded-circle(src=user.avatar, width='140', height="140")
+  if errors
+    each error in errors
+      .mt-4.alert.alert-danger= error
+  if successMgs
+    .mt4.alert.alert-
+  .row.mt-4
+    .col
+      .text-center.mt-2
+        h3 Change your profile
+      form(action='/users/profile', method="POST")
+        label(for="name") Name:
+        input#name.form-control(type="text", name="name", value=user.name)
+        label(for="email") Email:
+        input#email.form-control(type="email", name="email", value=user.email)
+        label(for="phone") Phone:
+        input#phone.form-control(type="text", name="phone", value=user.phone)
+        .d-flex.justify-content-center.mt-4
+          button.btn.btn-success Save
+    .col
+      .text-center.mt-2
+        h3 Change your password
+      form(action='/users/changePassword', method="POST")
+        label(for="oldPass") Your Password:
+        input#oldPass.form-control(type="password", name="oldPass", placeholder="Type your password")
+        label(for="newPass") New Password:
+        input#newPass.form-control(type="password", name="newPass", placeholder="Type your new password")
+        label(for="confirmPass") Confirm Password:
+        input#confirmPass.form-control(type="password", name="confirmPass", placeholder="Type confirm password")
+        .d-flex.justify-content-center.mt-4
+          button.btn.btn-success Save

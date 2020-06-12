@@ -1,0 +1,18 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 Create new transaction
+
+  form(action='/transactions/create', method='POST')
+    label(for='user') Choose user:
+    select.form-control(name='user')
+      each user in users
+        option(value=user.name)= user.name 
+    label.mt-3(for='books') Choose books:
+    select.form-control(name='books', size='4', multiple='')
+      each book in books
+        option(value=book.title)= book.title 
+    .text-center.mt-3
+      button.btn.btn-success Create
+

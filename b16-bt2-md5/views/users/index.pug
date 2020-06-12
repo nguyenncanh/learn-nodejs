@@ -1,0 +1,42 @@
+extends ../layout/common
+
+block content
+  .mt-3
+    .text-center
+      h1 Users List
+    .d-flex.align-items-center  
+      a.btn.btn-primary.mb-3(href="/users/create") New
+      form.d-flex.ml-auto(action="/users/search", method="GET")
+        input.form-control(type="text", name="q", value=searchValue)
+        button.btn.btn-primary.ml-2 Search
+    .table-responsive    
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th Name
+            th Phone
+            th.col-action Action
+        if (users instanceof Array === true)
+          each user in users
+            tbody 
+            tr
+              td= user.name
+              td= user.phone
+              td.col-action
+                a.btn.btn-success(href='/users/' + user.id + '/view') View
+                span &nbsp;
+                a.btn.btn-warning(href="/users/" + user.id +"/update") Update
+                span &nbsp;
+                a.btn.btn-danger(href='/users/' + user.id + '/delete') Delete
+        else
+          tbody 
+            tr
+              td= users.name
+              td= users.phone
+              td.col-action
+                a.btn.btn-success(href='/users/' + users.id + '/view') View
+                span &nbsp;
+                a.btn.btn-warning(href="/users/" + users.id +"/update") Update
+                span &nbsp;
+                a.btn.btn-danger(href='/users/' + users.id + '/delete') Delete
+  a(href="/") Back to Home page

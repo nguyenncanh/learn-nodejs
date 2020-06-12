@@ -1,0 +1,14 @@
+{
+  "books": [],
+  "users": [
+    {
+      "id": "QYoUWi1gl",
+      "name": "Quốc Việt",
+      "phone": "0987654321",
+      "email": "quocviet@gmail.com",
+      "password": "$2b$12$Q24BgPICsAINCKElp3VGBO2y8roxwrbBO3zDJZo0hY9JoCrB6OtpG",
+      "isAdmin": true
+    }
+  ],
+  "transactions": []
+}

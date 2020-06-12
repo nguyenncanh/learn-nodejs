@@ -1,0 +1,24 @@
+extends ../layout/common
+
+block content
+  .mt-3
+    .text-center
+      h1 Transaction detail
+
+  .d-flex
+    span.pr-2 Name:
+    span.user= user
+  div 
+      p Danh sách sách đã mượn: 
+  .table-responsive
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th Title
+          th Description
+      each book in books
+        tbody
+          tr
+            td= book.title
+            td= book.des
+  a(href="/transactions") Back to transactions list

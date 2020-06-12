@@ -1,0 +1,61 @@
+{
+  "books": [
+    {
+      "title": "Bố già",
+      "des": "gangter, tội phạm, gia đình, quan hệ xã hội",
+      "id": "KDgRGeTIS"
+    },
+    {
+      "title": "Đắc nhân tâm",
+      "des": "Thâm thúy, nghệ thuật",
+      "id": "fe_4rMiVt"
+    },
+    {
+      "title": "Cha giàu cha nghèo",
+      "des": "chất lượng cao",
+      "id": "2KSzQMOxM"
+    },
+    {
+      "title": "Đời ngắn đừng ngủ dài",
+      "des": "Chưa đọc nên chưa hiểu",
+      "id": "qxJDLZwbN"
+    }
+  ],
+  "users": [
+    {
+      "id": "QYoUWi1gl",
+      "name": "Quốc Việt",
+      "phone": "0987654321",
+      "email": "quocviet@gmail.com",
+      "password": "$2b$12$Q24BgPICsAINCKElp3VGBO2y8roxwrbBO3zDJZo0hY9JoCrB6OtpG",
+      "isAdmin": true
+    },
+    {
+      "id": "a-wIpaJgl",
+      "name": "Nguyễn Cảnh",
+      "phone": "0987654321",
+      "email": "nguyencanh@gmail.com",
+      "password": "$2b$12$D2giv2NODj8AwtAin5GibOqcwTOuOoKiNYcLWkdPELxTPhtbLENd2",
+      "isAdmin": true
+    },
+    {
+      "id": "MyVzv_ICe",
+      "name": "Khắc Hải",
+      "phone": "0123234328",
+      "email": "khachai@gmail.com",
+      "password": "$2b$12$8LeTdH6TvWFVSdlj3wiMeuJ7zRWAVsjumtptqKIhtndVfezyolyPu",
+      "isAdmin": true
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TawdMv1Uq",
+      "idUser": "QYoUWi1gl",
+      "idBooks": [
+        "fe_4rMiVt",
+        "2KSzQMOxM"
+      ],
+      "isComplete": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+.col-action {
+  width: 350px;
+}
+
+.user {
+  font-weight: bold;
+}
+
+.card-wrap {
+  flex-wrap: wrap;
+}
+
+.card-nth:nth-child(4n) {
+  margin-right: 0px !important;
+}

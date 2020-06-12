@@ -1,0 +1,21 @@
+extends ../layout/common
+
+block content
+  .text-center.mt-3
+    h1 User profile
+  .d-flex.justify-content-center.mt-4
+    if (user.avatar)
+      -console.log(user.avatar)
+      a(href='/users/profile/avatar')
+        img.rounded-circle(src=user.avatar, width='140', height="140")
+  form(action='/users/profile', method="POST")
+    label(for="name") Name:
+    input#name.form-control(type="text", name="name", value=user.name)
+    label(for="email") Email:
+    input#email.form-control(type="email", name="email", value=user.email)
+    label(for="phone") Phone:
+    input#phone.form-control(type="text", name="phone", value=user.phone)
+    label(for="password") Password:
+    input#password.form-control(type="password", name="password", value=user.password)
+    .text-center.mt-3
+      button.btn.btn-success Save

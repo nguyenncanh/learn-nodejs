@@ -1,0 +1,32 @@
+extends ../layout/common
+
+block content
+  .mt-3
+    .text-center
+      h1 Books List
+    .d-flex.align-items-center
+      a.btn.btn-primary.mb-3(href="/books/create") New
+      form.d-flex.ml-auto(action="/books/search", method="GET")
+        input.form-control(type="text", name="q", value=searchValue)
+        button.btn.btn-primary.ml-2 Search
+    .table-responsive
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th Avatar
+            th Title
+            th.col-action Action
+        each book in books
+         tbody 
+          tr
+            td
+              if (book.coverUrl)
+                img(src=book.coverUrl, width="50")
+            td= book.title
+            td.col-action
+              a.btn.btn-success(href='/books/' + book.id + '/view') View
+              span &nbsp;
+              a.btn.btn-warning(href="/books/" + book.id +"/update") Update
+              span &nbsp;
+              a.btn.btn-danger(href='/books/' + book.id + '/delete') Delete
+    a(href="/") Back to Home page

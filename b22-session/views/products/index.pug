@@ -1,0 +1,53 @@
+extends ../layout/common
+
+block content
+   .mt-3
+    .text-center
+      h1 Products
+    .d-flex
+      form.d-flex.ml-auto(action="/users/search", method="GET")
+        input.form-control(type="text", name="q", value=searchValue)
+        button.btn.btn-primary.ml-2 Search
+    .d-flex.card-wrap
+      each product in products
+        .card.mr-4.mb-4.card-nth(style='width: 16.2rem;')
+          if (!product.coverUrl)
+            img.card-img-top(src='https://picsum.photos/270/220' alt='Card image cap')
+          else
+            img.card-img-top(src=product.coverUrl, width=270, height=220, alt='Card image cap')
+          .card-body
+            h5.card-title= product.title
+            p.card-text= product.des
+            a.btn.btn-primary(href='/cart/add/'+ product.id) Add to cart
+    .d-flex.justify-content-center
+      nav(aria-label='Page navigation example')
+        ul.pagination
+          li.page-item
+            if (currentPage > 1)
+              a.page-link(href=`/products?page=${currentPage - 1}`) Previous
+            else if (currentPage - 1 <= 1)
+              a.page-link.btn.disabled(href=`/products?page=${currentPage}`) Previous 
+            //if (oldPage < currentPage || currentPage === 1)
+            li.page-item
+              a.page-link(href=`/products?page=${currentPage}`)= currentPage
+            li.page-item
+              if (currentPage + 1 <= totalPage)
+                a.page-link(href=`/products?page=${currentPage + 1}`)= currentPage + 1
+            li.page-item
+              if (currentPage + 2 <= totalPage)
+                a.page-link(href=`/products?page=${currentPage + 2}`)= currentPage + 2
+          //else if (currentPage - 2 >= 1)
+            li.page-item
+              if (currentPage - 2 >= 0)
+                a.page-link(href=`/products?page=${currentPage - 2}`)= currentPage - 2
+            li.page-item
+              if (currentPage - 1 >= 1)
+                a.page-link(href=`/products?page=${currentPage - 1}`)= currentPage - 1
+            li.page-item
+              a.page-link(href=`/products?page=${currentPage}`)= currentPage
+          li.page-item
+            if (currentPage < totalPage)
+              a.page-link(href=`/products?page=${currentPage + 1}`) Next
+            else if (currentPage + 1 >= totalPage)
+              a.page-link.btn.disabled(href=`/products?page=${currentPage}`) Next
+            

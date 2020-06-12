@@ -1,0 +1,21 @@
+extends ../layout/common
+
+block content
+    .text-center.mt-3
+        h1 Register Shop
+    
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+    else if message
+        .alert.alert-danger= message
+    else if success
+        .alert.alert-success= success
+
+    form(action="/shops/registerShop" method="POST")
+        label(for="nameShop") Shop name:
+        input#nameShop.form-control(type="text", name="nameShop", value=values ? values.nameShop : "")
+        label(for="email") Email:
+        input#email.form-control(type="email", name="email", value=values ? values.email : "")
+        .text-center.mt-3  
+            button.btn.btn-success  Register

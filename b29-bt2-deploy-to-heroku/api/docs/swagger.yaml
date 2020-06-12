@@ -1,0 +1,635 @@
+openapi: 3.0.0
+info:
+  title: Book Store API
+  version: 1.0.0
+  contact:
+    email: canhzone861998@gmail.com
+servers:
+  - url: http://localhost:3000/api/
+    description: BookStore API for dev
+tags:
+  - name: auth
+    description: Authentication
+  - name: books
+    description: Access to books of store
+  - name: users
+    description: Operations about users
+  - name: transactions
+    description: Access to transactions of store
+paths:
+  /login:
+    post:
+      tags:
+        - auth
+      summary: login
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /logout:
+    get:
+      tags:
+        - auth
+      summary: logout
+      responses:
+        '200': 
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /books:
+    get:
+      tags:
+        - books
+      summary: get books
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  books:
+                    type: array
+                    items:
+                      $ref: "#components/schemas/Book"
+                example:
+                  books:
+                    - _id: 5ea5700c9b99a306c9b0c268
+                      title: Book name
+                      description: Book description
+                      imgUrl: https://res.cloudinary.com/nguyencanh/image/upload/v1590670888/bpj7tf3dxnwoerbppay9.jpg
+                      __v: 0
+    post:
+      tags:
+        - books
+      summary: add new book
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                coverUrl:
+                  type: string
+                des:
+                  type: string
+                price:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /books/{id}:
+    get:
+      tags:
+        - books
+      summary: get a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The book ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  books:
+                    $ref: '#/components/schemas/Book'
+              example:
+                _id: 5ea5700c9b99a306c9b0c268
+                title: Book name
+                des: Book description
+                coverUrl: https://res.cloudinary.com/nguyencanh/image/upload/v1590670888/bpj7tf3dxnwoerbppay9.jpg
+                price: ""
+                __v: 0
+    delete:
+      tags:
+        - books
+      summary: delete a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The book ID
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema: 
+                type: string
+    put:
+      tags:
+        - books
+      summary: update a book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The book ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  des:
+                    type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema: 
+                type: string
+  /users:
+    get:
+      tags:
+        - users
+      summary: get users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users: 
+                    type: array
+                    items: 
+                      $ref: '#components/schemas/User'
+                  searchValue:
+                    type: string 
+    post:
+      summary: add new user
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                phone:
+                  type: string
+                email: 
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+                avatar:
+                  type: string
+                isAdmin: 
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /users/{id}:
+    get:
+      tags:
+       - users
+      summary: get a user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The user ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+    delete:
+      tags:
+        - users
+      summary: delete a user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The user ID
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+    patch:
+      tags:
+        - users
+      summary: update a user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The user ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                phone:
+                  type: string
+                email:
+                  type: string
+                  format: email
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /users/profile/updateAvatar:
+    put:
+      tags:
+        - users
+      summary: update user avatar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /users/changePassword:
+    put:
+      tags:
+        - users
+      summary: update user avatar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPass:
+                  type: string
+                  format: password
+                newPass:
+                  type: string
+                  format: password
+                confirmPass:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string            
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  values: 
+                    type: string
+  /transactions:
+    get:
+      tags:
+        - transactions
+      summary: get transactions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions: 
+                    type: array
+                    items: 
+                      $ref: '#components/schemas/Transaction'
+                  users: 
+                    type: array
+                    items: 
+                      $ref: '#components/schemas/User'
+                  books: 
+                    type: array
+                    items: 
+                      $ref: '#components/schemas/Book'
+                  searchValue:
+                    type: string
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      tags:
+        - transactions
+      summary: add new transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user: 
+                  type: string
+                books:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /transactions/{id}:
+    get:
+      tags:
+        - transactions
+      summary: get a transaction
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The transaction ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  transactions:
+                    $ref: '#/components/schemas/Transacton'
+    delete:
+      tags:
+        - transactions
+      summary: delete a transaction
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The transaction ID
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /transactions/createPage:
+    get:
+      tags:
+        - transactions
+      summary: get users and books for create transaction page
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  users:
+                    $ref: '#/components/schemas/User'
+                  books:
+                    $ref: '#/components/schemas/Book'
+  /transactions/{id}/complete:
+    put:
+      tags:
+        - transactions
+      summary: complete a transaction
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The transaction ID
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: 
+                    type: string
+                  transactions:
+                    $ref: '#/components/schemas/Transaction'
+                  users:
+                    $ref: '#/components/schemas/User' 
+                  books:
+                    $ref: '#/components/schemas/Book'
+  /transactions/{id}/{idBook}:
+    delete:
+      tags:
+        - transactions
+      summary: delete book in a transaction
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The transaction ID
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The book ID
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string            
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        _id:
+          type: string
+        title:
+          type: string
+        des:
+          type: string
+        coverUrl:
+          type: string
+        price:
+          type: string
+      example:
+        _id: 5ea5700c9b99a306c9b0c268
+        title: Book name
+        des: Book description
+        coverUrl: https://res.cloudinary.com/nguyencanh/image/upload/v1590670888/bpj7tf3dxnwoerbppay9.jpg
+        price: ""
+        __v: 0
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        isAdmin:
+          type: boolean
+          default: false
+        avatar:
+          type: string
+        wrongLoginCount:
+          type: integer
+      example:
+        _id: 5ea5700c9b99a306c9b0c268
+        name: Your name
+        phone: Your phone
+        email: example@gmail.com
+        password: abc123
+        isAdmin: false
+        avatar: https://res.cloudinary.com/nguyencanh/image/upload/v1590670888/bpj7tf3dxnwoerbppay9.jpg
+        wrongLoginCount: 0
+        __v: 0
+    Transaction:
+      type: object
+      properties:
+        _id:
+          type: string
+        idUser:
+          type: string
+        idBooks:
+          type: object
+          properties:
+            bookId:
+              type: string
+            amount:
+              type: integer
+        isComplete:
+          type: boolean
+      example:
+        _id: 5ea5700c9b99a306c9b0c268
+        idUser: Your userId
+        idBooks:
+          bookId: 5e232141erwe934113
+          amount: 1
+        isComplete: false
+        __v: 0

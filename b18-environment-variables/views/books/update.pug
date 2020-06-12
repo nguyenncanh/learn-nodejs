@@ -1,0 +1,14 @@
+extends ../layout/common
+
+block content  
+  .text-center.mt-3
+    h1 Update book
+
+  form(action='/books/'+ book.id +'/update', method="POST")
+    label(for="title") Title:
+    input#title.form-control(type="text", name="title", value=book.title)
+    br
+    label(for="des") Description:
+    input#des.form-control(type="text", name="des", value=book.des)
+    .text-center.mt-3
+      button.btn.btn-success Save

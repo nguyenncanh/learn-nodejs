@@ -1,0 +1,29 @@
+html
+  head
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+    link(rel='icon', href='https://cdn.glitch.com/190b032a-a75e-4ae1-b800-6bf3529bfc0f%2Ffavicon.png?v=1588261634075')
+    link(rel='stylesheet', type='text/css', href='/custom.css')
+  body
+    .container-fluid
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        a.navbar-brand(href='/') Logo
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.nav-link(href='/')
+                | Home 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='/books') Books
+            li.nav-item
+              a.nav-link(href='/users') Users
+            li.nav-item
+              a.nav-link(href='/transactions') Transactions
+        if (!user)
+          a(href='/auth/login') Login
+        else
+          a(href='/users/'+ user.id + '/view')= user.name
+      .container
+        block content

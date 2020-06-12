@@ -1,0 +1,26 @@
+extends ../layout/common
+
+block content
+  .mt-3
+    .text-center
+      h1 Cart
+  if (countCart === 0)
+    h5.alert.alert-warning(role="alert") No item in cart!!!
+  else
+    if (sessions.cart !== {})
+      .table-responsive
+        table.table.table-bordered.table-hover
+          thead
+            tr
+              th Title
+              th Amount
+          tbody 
+            -for(var book of books)
+              tr
+                td= book.title
+                -for (var productId in sessions.cart)
+                  if (productId === book.id)
+                    td= sessions.cart[productId]
+        .text-center.mt-3
+          a.btn.btn-success(href='/cart/rent', onclick='rent()') Rent
+  a(href="/") Back to Home page
